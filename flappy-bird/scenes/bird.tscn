@@ -26,6 +26,9 @@ animations = [{
 radius = 12.0416
 
 [node name="Bird" type="CharacterBody2D"]
+z_index = 5
+position = Vector2(0, -5)
+collision_layer = 16
 script = ExtResource("1_sbawd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -35,5 +38,4 @@ autoplay = "fly"
 frame_progress = 0.385857
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 5
 shape = SubResource("CircleShape2D_1mqcj")
