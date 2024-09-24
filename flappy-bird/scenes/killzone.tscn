@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b2os0o7swnj6i"]
+
+[node name="Killzone" type="Area2D"]
+
+[node name="Timer" type="Timer" parent="."]
