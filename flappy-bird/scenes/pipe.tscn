@@ -1,15 +1,70 @@
-[gd_scene load_steps=3 format=3 uid="uid://bma823munxu1"]
+[gd_scene load_steps=9 format=3 uid="uid://bma823munxu1"]
 
+[ext_resource type="Script" path="res://scripts/pipe.gd" id="1_8nci0"]
 [ext_resource type="Texture2D" uid="uid://de2l11coshln0" path="res://assets/sprites/pipe-green.png" id="1_oae4w"]
+[ext_resource type="PackedScene" uid="uid://b2os0o7swnj6i" path="res://scenes/killzone.tscn" id="2_7h5qq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmcme"]
 size = Vector2(44, 316)
 
+[sub_resource type="Animation" id="Animation_wwjoh"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(150, 0), Vector2(-300, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mjjyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehutq"]
+_data = {
+"RESET": SubResource("Animation_mjjyp"),
+"move": SubResource("Animation_wwjoh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmexa"]
+size = Vector2(40.1518, 312)
+
 [node name="Pipe" type="StaticBody2D"]
+position = Vector2(150, 0)
 collision_mask = 2
+script = ExtResource("1_8nci0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_oae4w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tmcme")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ehutq")
+}
+autoplay = "move"
+
+[node name="Killzone" parent="." instance=ExtResource("2_7h5qq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("RectangleShape2D_xmexa")
