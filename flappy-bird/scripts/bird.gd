@@ -3,7 +3,6 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func _physics_process(delta: float) -> void:
@@ -14,5 +13,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("fly"):
 		velocity.y = JUMP_VELOCITY
+	
+	#if is_on_floor():
+		#collision_shape.disabled = true
 
 	move_and_slide()

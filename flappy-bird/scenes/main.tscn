@@ -1,14 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfq3qhdbeqvxn"]
+[gd_scene load_steps=8 format=3 uid="uid://10gkjra4sd8d"]
 
 [ext_resource type="Texture2D" uid="uid://bhrc7twp4xr76" path="res://assets/sprites/background-day.png" id="1_yghrk"]
 [ext_resource type="PackedScene" uid="uid://djb4li13rq64n" path="res://scenes/ground.tscn" id="2_drexf"]
 [ext_resource type="PackedScene" uid="uid://b2os0o7swnj6i" path="res://scenes/killzone.tscn" id="3_gy3dm"]
 [ext_resource type="PackedScene" uid="uid://cyi2ohej8d5u6" path="res://scenes/bird.tscn" id="3_srx7k"]
+[ext_resource type="PackedScene" uid="uid://bma823munxu1" path="res://scenes/pipe.tscn" id="5_kgo30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm53x"]
 size = Vector2(337.827, 112)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqny8"]
+size = Vector2(48, 318)
+
 [node name="Main" type="Node2D"]
+position = Vector2(-59, 114)
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_yghrk")
@@ -26,3 +31,31 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Killzone"]
 shape = SubResource("RectangleShape2D_fm53x")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Pipe" parent="Node2D" instance=ExtResource("5_kgo30")]
+position = Vector2(102, 176)
+
+[node name="Killzone2" parent="Node2D/Pipe" instance=ExtResource("3_gy3dm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Pipe/Killzone2"]
+shape = SubResource("RectangleShape2D_oqny8")
+
+[node name="Pipe2" parent="Node2D" instance=ExtResource("5_kgo30")]
+position = Vector2(98, -286)
+rotation = 3.13867
+scale = Vector2(1, 1)
+
+[node name="Killzone2" parent="Node2D/Pipe2" instance=ExtResource("3_gy3dm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Pipe2/Killzone2"]
+shape = SubResource("RectangleShape2D_oqny8")
+
+[node name="Pipe3" parent="Node2D" instance=ExtResource("5_kgo30")]
+position = Vector2(264, 118)
+
+[node name="Killzone2" parent="Node2D/Pipe3" instance=ExtResource("3_gy3dm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Pipe3/Killzone2"]
+shape = SubResource("RectangleShape2D_oqny8")
