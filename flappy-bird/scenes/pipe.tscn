@@ -10,20 +10,34 @@ size = Vector2(44, 316)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmexa"]
 size = Vector2(40.1518, 312)
 
-[node name="Pipe" type="StaticBody2D"]
+[node name="Pipes" type="Node2D"]
 position = Vector2(150, 0)
-collision_mask = 2
 script = ExtResource("1_8nci0")
-maxOffset = 200.0
-minOffset = 130.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PipeUp" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PipeUp"]
 texture = ExtResource("1_oae4w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeUp"]
 shape = SubResource("RectangleShape2D_tmcme")
 
-[node name="Killzone" parent="." instance=ExtResource("2_7h5qq")]
+[node name="Killzone" parent="PipeUp" instance=ExtResource("2_7h5qq")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeUp/Killzone"]
+shape = SubResource("RectangleShape2D_xmexa")
+
+[node name="PipeDown" type="StaticBody2D" parent="."]
+position = Vector2(0, -490)
+rotation = 3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="PipeDown"]
+texture = ExtResource("1_oae4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeDown"]
+shape = SubResource("RectangleShape2D_tmcme")
+
+[node name="Killzone" parent="PipeDown" instance=ExtResource("2_7h5qq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeDown/Killzone"]
 shape = SubResource("RectangleShape2D_xmexa")
