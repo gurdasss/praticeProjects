@@ -29,3 +29,23 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Killzone"]
 shape = SubResource("RectangleShape2D_fm53x")
+
+[node name="Scores" type="Label" parent="."]
+z_index = 5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = -219.0
+offset_right = 50.0
+offset_bottom = -150.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.295867, 0.295866, 0.295866, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 50
+text = "0"

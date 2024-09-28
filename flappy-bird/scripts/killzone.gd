@@ -5,8 +5,7 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	# check if the child node exists
 	if is_instance_valid(timer):
-		print("You died!!")
-		body.hide()
+		body.hide() # hide the entered body once it entered this area
 		timer.start()
 
 
